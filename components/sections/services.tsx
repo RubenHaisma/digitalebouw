@@ -17,28 +17,24 @@ const services = [
     title: "Custom Websites",
     description:
       "Wij ontwikkelen op maat gemaakte websites die perfect aansluiten bij uw merk en doelstellingen.",
-    icon: Monitor,
     href: "/diensten/custom-websites",
   },
   {
     title: "E-commerce Oplossingen",
     description:
       "Professionele webshops met alle functionaliteiten die u nodig heeft om online te verkopen.",
-    icon: ShoppingCart,
     href: "/diensten/e-commerce",
   },
   {
     title: "SEO Optimalisatie",
     description:
       "Verbeter uw online zichtbaarheid en bereik meer potentiële klanten met onze SEO-diensten.",
-    icon: Search,
     href: "/diensten/seo",
   },
   {
     title: "Webhosting",
     description:
       "Betrouwbare en snelle hosting oplossingen voor een optimale website performance.",
-    icon: Server,
     href: "/diensten/webhosting",
   },
 ];
@@ -64,7 +60,6 @@ export function ServicesSection() {
             >
               <Card className="h-full">
                 <CardHeader>
-                  <service.icon className="h-10 w-10 text-primary" />
                   <CardTitle className="mt-4">{service.title}</CardTitle>
                   <CardDescription>{service.description}</CardDescription>
                 </CardHeader>

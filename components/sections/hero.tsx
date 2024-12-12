@@ -29,10 +29,10 @@ export function HeroSection() {
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button size="lg" asChild>
-              <Link href="/contact">Gratis Consultatie</Link>
+              <Link href="/contact">Gratis consult</Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
-              <Link href="/portfolio">Bekijk Ons Portfolio</Link>
+              <Link href="/portfolio">Bekijk ons portfolio</Link>
             </Button>
           </div>
         </motion.div>

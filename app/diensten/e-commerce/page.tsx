@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ShoppingCart, CreditCard, BarChart, Lock } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const features = [
   {
@@ -34,6 +35,7 @@ export default function Ecommerce() {
       <main className="flex-1">
         <section className="py-20">
           <div className="container">
+            {/* Header Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -46,6 +48,7 @@ export default function Ecommerce() {
               </p>
             </motion.div>
 
+            {/* Features Section */}
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
               {features.map((feature, index) => (
                 <motion.div
@@ -54,8 +57,8 @@ export default function Ecommerce() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <Card className="p-6 text-center">
-                    <feature.icon className="w-12 h-12 mx-auto mb-4 text-primary" />
+                  <Card className="p-6 h-64 flex flex-col items-center justify-center text-center shadow-md hover:shadow-lg transition-shadow duration-200">
+                    <feature.icon className="w-12 h-12 mb-4 text-primary" />
                     <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
                     <p className="text-muted-foreground">{feature.description}</p>
                   </Card>
@@ -63,8 +66,13 @@ export default function Ecommerce() {
               ))}
             </div>
 
+            {/* Call-to-Action Section */}
             <div className="text-center">
-              <Button size="lg">Start Uw Webshop</Button>
+              <Link href="/contact">
+                <Button size="lg" className="px-6 py-3 text-lg font-semibold">
+                  Neem contact op
+                </Button>
+              </Link>
             </div>
           </div>
         </section>

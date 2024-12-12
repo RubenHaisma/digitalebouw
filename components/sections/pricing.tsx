@@ -82,14 +82,14 @@ export function PricingSection() {
                     </li>
                   ))}
                 </ul>
-                <div className="mt-auto">
-                  <Link href="/contact">
-                    <Button className="w-full">Neem Contact Op</Button>
-                  </Link>
-                </div>
               </Card>
             </motion.div>
           ))}
+        </div>
+        <div className="mt-12 text-center">
+          <Link href="/contact">
+            <Button className="px-6 py-2">Neem Contact Op</Button>
+          </Link>
         </div>
       </div>
     </section>

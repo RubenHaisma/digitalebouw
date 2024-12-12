@@ -29,15 +29,7 @@ export function ProjectCard({
     <Card className={`overflow-hidden transition-all duration-300 ${
       isSelected ? "ring-2 ring-primary" : ""
     }`}>
-      <div className="relative h-48">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          className="object-cover"
-        />
-      </div>
-      <div className="p-6">
+      <div className="p-6 cursor-pointer" onClick={onSelect}>
         <h3 className="text-xl font-bold mb-2">{title}</h3>
         <p className="text-muted-foreground mb-4">{description}</p>
         <div className="flex flex-wrap gap-2 mb-4">

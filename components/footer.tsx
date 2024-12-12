@@ -9,7 +9,7 @@ export function Footer() {
   return (
     <footer className="border-t bg-background">
       <div className="container py-12">
-        <div className="grid gap-8 lg:grid-cols-4">
+        <div className="grid gap-8 lg:grid-cols-3">
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <Building2 className="h-6 w-6" />
@@ -57,27 +57,17 @@ export function Footer() {
                   Portfolio
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/blog" className="text-muted-foreground hover:text-foreground">
                   Blog
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/contact" className="text-muted-foreground hover:text-foreground">
                   Contact
                 </Link>
               </li>
             </ul>
-          </div>
-          <div className="space-y-4">
-            <h3 className="text-sm font-semibold">Nieuwsbrief</h3>
-            <p className="text-sm text-muted-foreground">
-              Blijf op de hoogte van onze laatste ontwikkelingen.
-            </p>
-            <div className="flex space-x-2">
-              <Input placeholder="Email" type="email" />
-              <Button>Aanmelden</Button>
-            </div>
           </div>
         </div>
         <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">

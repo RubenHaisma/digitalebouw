@@ -28,7 +28,7 @@ export function ContactSection() {
     <section className="bg-muted/50 py-20">
       <div className="container">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold">Neem Contact Op</h2>
+          <h2 className="mb-4 text-3xl font-bold">Contact</h2>
           <p className="mx-auto max-w-2xl text-muted-foreground">
             Heeft u een vraag of wilt u meer informatie? Neem contact met ons op.
           </p>

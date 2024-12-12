@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Building2, Menu, X } from "lucide-react";
+import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuLink, NavigationMenuTrigger, NavigationMenuContent } from "@/components/ui/navigation-menu";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -26,33 +27,70 @@ export function Navbar() {
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-4">
-          <Link href="/" className={cn(navLinkClasses(pathname === "/"))}>
-            Home
-          </Link>
-          <div className="relative group">
-            <button className="inline-flex items-center text-sm font-medium transition-colors hover:text-accent">
-              Diensten
-            </button>
-            <div className="absolute left-0 hidden w-48 mt-2 bg-background shadow-md group-hover:block">
-              {services.map((service) => (
-                <Link
-                  key={service.title}
-                  href={service.href}
-                  className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+        <NavigationMenu className="hidden md:flex">
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <Link href="/" legacyBehavior passHref>
+                <NavigationMenuLink
+                  className={cn(
+                    "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50",
+                    pathname === "/" && "bg-accent/50"
+                  )}
                 >
-                  {service.title}
-                </Link>
-              ))}
-            </div>
-          </div>
-          <Link href="/portfolio" className={cn(navLinkClasses(pathname === "/portfolio"))}>
-            Portfolio
-          </Link>
-          {/* <Link href="/blog" className={cn(navLinkClasses(pathname === "/blog"))}>
-            Blog
-          </Link> */}
-        </nav>
+                  Home
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Diensten</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                  {services.map((service) => (
+                    <li key={service.title}>
+                      <NavigationMenuLink asChild>
+                        <Link
+                          href={service.href}
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        >
+                          <div className="text-sm font-medium leading-none">
+                            {service.title}
+                          </div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            {service.description}
+                          </p>
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                  ))}
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href="/portfolio" legacyBehavior passHref>
+                <NavigationMenuLink
+                  className={cn(
+                    "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50",
+                    pathname === "/portfolio" && "bg-accent/50"
+                  )}
+                >
+                  Portfolio
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              {/* <Link href="/blog" legacyBehavior passHref>
+                <NavigationMenuLink
+                  className={cn(
+                    "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50",
+                    pathname === "/blog" && "bg-accent/50"
+                  )}
+                >
+                  Blog
+                </NavigationMenuLink>
+              </Link> */}
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
 
         {/* Mobile Navigation and Theme Toggle */}
         <div className="flex md:hidden items-center space-x-2">
@@ -115,18 +153,22 @@ const services = [
   {
     title: "Custom Websites",
     href: "/diensten/custom-websites",
+    description: "Custom website development services",
   },
   {
     title: "E-commerce Oplossingen",
     href: "/diensten/e-commerce",
+    description: "E-commerce solutions for your business",
   },
   {
     title: "SEO Optimalisatie",
     href: "/diensten/seo",
+    description: "SEO optimization services for your website",
   },
   {
     title: "Webhosting",
     href: "/diensten/webhosting",
+    description: "Reliable web hosting services for your website",
   },
 ];
 

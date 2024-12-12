@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import { Code, Palette, Zap, Settings, Globe, Smartphone, Shield } from "lucide-react";
 import { Card } from "@/components/ui/card";
@@ -51,49 +52,54 @@ const features = [
 
 export default function CustomWebsites() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <main className="flex-1">
-        <section className="py-20">
-          <div className="container">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-center mb-16"
-            >
-              <h1 className="text-4xl font-bold mb-6">Custom Websites</h1>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Wij ontwikkelen op maat gemaakte websites die perfect aansluiten bij uw merk en doelstellingen.
-              </p>
-            </motion.div>
+      <div className="flex flex-col min-h-screen">
+        <main className="flex-1">
+          <section className="py-20 bg-muted/50">
+            <div className="container">
+              {/* Header Section */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-center mb-16"
+              >
+                <h1 className="text-4xl font-bold mb-6 text-primary">Custom Websites</h1>
+                <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                  Wij ontwikkelen op maat gemaakte websites die perfect aansluiten bij uw merk en doelstellingen.
+                </p>
+              </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={feature.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <Card className="p-6 h-64 flex flex-col items-center justify-center text-center shadow-md hover:shadow-lg transition-shadow duration-200">
-                    <feature.icon className="w-12 h-12 mb-4 text-primary" />
-                    <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                    <p className="text-muted-foreground">{feature.description}</p>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
+              {/* Features Grid */}
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                {features.map((feature, index) => (
+                  <motion.div
+                    key={feature.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <Card className="h-64 flex flex-col items-center justify-center text-center shadow-md hover:shadow-lg hover:translate-y-[-4px] transition-all duration-200 rounded-lg overflow-hidden">
+                      <div className="flex items-center justify-center w-16 h-16 mb-4 bg-primary/10 text-primary rounded-full">
+                        <feature.icon className="w-8 h-8" />
+                      </div>
+                      <h3 className="text-xl font-bold mb-2 text-gray-900">{feature.title}</h3>
+                      <p className="text-sm text-muted-foreground">{feature.description}</p>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
 
-            <div className="text-center">
-              <Link href="/contact">
-                <Button size="lg" className="px-6 py-3 text-lg font-semibold">
-                  Neem contact Op
-                </Button>
-              </Link>
+              {/* Call-to-Action */}
+              <div className="text-center mt-12">
+                <Link href="/contact">
+                  <Button size="lg" className="px-6 py-3 text-lg font-semibold">
+                    Neem contact op
+                  </Button>
+                </Link>
+              </div>
             </div>
-          </div>
-        </section>
-      </main>
-    </div>
+          </section>
+        </main>
+      </div>
   );
 }

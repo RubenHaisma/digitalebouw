@@ -5,7 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
 import { Toaster } from '@/components/ui/sonner';
-import { Analytics } from '@/components/analytics';
+import { GoogleAnalytics } from '@/components/analytics';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -53,7 +53,7 @@ export default function RootLayout({
           <Footer />
           <Toaster />
         </ThemeProvider>
-        <Analytics />
+        <GoogleAnalytics />
       </body>
     </html>
   );

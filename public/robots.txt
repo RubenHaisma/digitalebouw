@@ -1,3 +1,4 @@
 User-agent: *
-Allow: /
-Sitemap: https://duocompensatie.nl/sitemap.xml
+Disallow: /admin/
+Allow: /public/
+Sitemap: https://digitalebouw.nl/sitemap.xml

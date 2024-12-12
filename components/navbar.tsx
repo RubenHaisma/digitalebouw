@@ -14,6 +14,7 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -31,64 +32,64 @@ export function Navbar() {
           <NavigationMenu>
             <NavigationMenuList className="space-x-4"> {/* Added space-x-4 for spacing */}
               <NavigationMenuItem>
-          <Link href="/" legacyBehavior passHref>
-            <NavigationMenuLink
-              className={cn(
-                "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50",
-                pathname === "/" && "bg-accent/50"
-              )}
-            >
-              Home
-            </NavigationMenuLink>
-          </Link>
+                <Link href="/" legacyBehavior passHref>
+                  <NavigationMenuLink
+                    className={cn(
+                      "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50",
+                      pathname === "/" && "bg-accent/50"
+                    )}
+                  >
+                    Home
+                  </NavigationMenuLink>
+                </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-          <NavigationMenuTrigger>Diensten</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {services.map((service) => (
-                <li key={service.title}>
-            <NavigationMenuLink asChild>
-              <Link
-                href={service.href}
-                className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-              >
-                <div className="text-sm font-medium leading-none">
-                  {service.title}
-                </div>
-                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                  {service.description}
-                </p>
-              </Link>
-            </NavigationMenuLink>
-                </li>
-              ))}
-            </ul>
-          </NavigationMenuContent>
+                <NavigationMenuTrigger>Diensten</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                    {services.map((service) => (
+                      <li key={service.title}>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            href={service.href}
+                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                          >
+                            <div className="text-sm font-medium leading-none">
+                              {service.title}
+                            </div>
+                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                              {service.description}
+                            </p>
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-          <Link href="/portfolio" legacyBehavior passHref>
-            <NavigationMenuLink
-              className={cn(
-                "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50",
-                pathname === "/portfolio" && "bg-accent/50"
-              )}
-            >
-              Portfolio
-            </NavigationMenuLink>
-          </Link>
+                <Link href="/portfolio" legacyBehavior passHref>
+                  <NavigationMenuLink
+                    className={cn(
+                      "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50",
+                      pathname === "/portfolio" && "bg-accent/50"
+                    )}
+                  >
+                    Portfolio
+                  </NavigationMenuLink>
+                </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-          {/* <Link href="/blog" legacyBehavior passHref>
-            <NavigationMenuLink
-              className={cn(
-                "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50",
-                pathname === "/blog" && "bg-accent/50"
-              )}
-            >
-              Blog
-            </NavigationMenuLink>
-          </Link> */}
+                {/* <Link href="/blog" legacyBehavior passHref>
+                  <NavigationMenuLink
+                    className={cn(
+                      "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50",
+                      pathname === "/blog" && "bg-accent/50"
+                    )}
+                  >
+                    Blog
+                  </NavigationMenuLink>
+                </Link> */}
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
@@ -118,7 +119,7 @@ export function Navbar() {
       {isMobileMenuOpen && (
         <div className="md:hidden border-t bg-background">
           <nav className="flex flex-col p-4 space-y-2">
-            <Link href="/" className={cn(navLinkClasses(pathname === "/"))}>
+            <Link href="/" className={cn(navLinkClasses(pathname === "/"))} onClick={closeMobileMenu}>
               Home
             </Link>
             <div>
@@ -128,20 +129,20 @@ export function Navbar() {
               <ul className="mt-2 space-y-2 pl-4">
                 {services.map((service) => (
                   <li key={service.title}>
-                    <Link href={service.href} className="block text-sm hover:text-accent">
+                    <Link href={service.href} className="block text-sm hover:text-accent" onClick={closeMobileMenu}>
                       {service.title}
                     </Link>
                   </li>
                 ))}
               </ul>
             </div>
-            <Link href="/portfolio" className={cn(navLinkClasses(pathname === "/portfolio"))}>
+            <Link href="/portfolio" className={cn(navLinkClasses(pathname === "/portfolio"))} onClick={closeMobileMenu}>
               Portfolio
             </Link>
-            {/* <Link href="/blog" className={cn(navLinkClasses(pathname === "/blog"))}>
+            {/* <Link href="/blog" className={cn(navLinkClasses(pathname === "/blog"))} onClick={closeMobileMenu}>
               Blog
             </Link> */}
-            <Link href="/contact" className="block text-sm font-medium text-primary hover:text-accent">
+            <Link href="/contact" className="block text-sm font-medium text-primary hover:text-accent" onClick={closeMobileMenu}>
               Gratis consult
             </Link>
           </nav>

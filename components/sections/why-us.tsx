@@ -35,7 +35,7 @@ const features = [
 
 export function WhyUsSection() {
   return (
-    <section className="bg-muted/50 py-20">
+    <section className="bg-muted/50 py-20 dark:bg-muted/80">
       <div className="container">
         {/* Section Header */}
         <motion.div
@@ -44,10 +44,8 @@ export function WhyUsSection() {
           transition={{ duration: 0.5 }}
           className="mb-12 text-center"
         >
-          <h2 className="mb-4 text-4xl font-extrabold text-primary">
-            Waarom Digitalebouw.nl?
-          </h2>
-          <p className="mx-auto max-w-xl text-muted-foreground">
+          <h2 className="mb-4 text-3xl font-bold">Waarom Digitalebouw.nl?</h2>
+          <p className="mx-auto max-w-xl text-muted-foreground dark:text-muted-foreground-light">
             Ontdek waarom bedrijven voor ons kiezen als hun partner in digitale groei.
           </p>
         </motion.div>
@@ -61,15 +59,15 @@ export function WhyUsSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="h-full flex flex-col items-center justify-between text-center shadow-lg hover:shadow-xl hover:translate-y-[-4px] transition-all duration-300 rounded-lg overflow-hidden">
+              <Card className="h-full flex flex-col items-center justify-between text-center shadow-lg hover:shadow-xl hover:translate-y-[-4px] transition-all duration-300 rounded-lg overflow-hidden dark:bg-card-dark">
                 <CardHeader className="flex flex-col items-center justify-center mt-6">
-                  <div className="flex items-center justify-center w-16 h-16 bg-primary/10 text-primary rounded-full shadow-md transition-transform duration-300 group-hover:scale-110">
+                  <div className="flex items-center justify-center w-16 h-16 bg-primary/10 text-primary rounded-full shadow-md transition-transform duration-300 group-hover:scale-110 dark:bg-primary/20 dark:text-primary-light">
                     <feature.icon className="h-8 w-8" />
                   </div>
-                  <CardTitle className="mt-4 text-lg font-bold text-cyan">
+                  <CardTitle className="mt-4 text-lg font-bold text-cyan dark:text-cyan-light">
                     {feature.title}
                   </CardTitle>
-                  <CardDescription className="mt-2 text-sm text-muted-foreground">
+                  <CardDescription className="mt-2 text-sm text-muted-foreground dark:text-muted-foreground-light">
                     {feature.description}
                   </CardDescription>
                 </CardHeader>

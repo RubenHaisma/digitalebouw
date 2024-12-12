@@ -10,11 +10,11 @@ import { GoogleAnalytics } from '@/components/analytics';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Digitalebouw.nl - Professionele Website Ontwikkeling',
-  description: 'Wij bouwen hoogwaardige websites op maat voor uw bedrijf. Expertise in custom development, e-commerce en SEO optimalisatie.',
+  title: 'Digitalebouw.nl - Professionele Website Ontwikkeling | E-commerce & SEO',
+  description: 'Digitalebouw.nl biedt professionele website ontwikkeling, e-commerce oplossingen en SEO-optimalisatie voor bedrijven van elke grootte.',
   openGraph: {
     title: 'Digitalebouw.nl - Professionele Website Ontwikkeling',
-    description: 'Wij bouwen hoogwaardige websites op maat voor uw bedrijf.',
+    description: 'Wij bouwen hoogwaardige websites op maat voor uw bedrijf met een focus op SEO en e-commerce.',
     url: 'https://digitalebouw.nl',
     siteName: 'Digitalebouw.nl',
     images: [
@@ -27,10 +27,18 @@ export const metadata: Metadata = {
     locale: 'nl_NL',
     type: 'website',
   },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@digitalebouwnl',
+    title: 'Digitalebouw.nl - Professionele Website Ontwikkeling',
+    description: 'Maatwerk websites, e-commerce & SEO diensten voor bedrijven.',
+  },
   icons: {
     icon: '/favicon.ico',
   },
 };
+
+
 
 export default function RootLayout({
   children,

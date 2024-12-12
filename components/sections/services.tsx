@@ -54,7 +54,7 @@ export function ServicesSection() {
           transition={{ duration: 0.5 }}
           className="mb-12 text-center"
         >
-          <h2 className="mb-4 text-4xl font-extrabold text-primary">Onze Diensten</h2>
+          <h2 className="mb-4 text-3xl font-bold">Onze diensten</h2>
           <p className="mx-auto max-w-xl text-muted-foreground">
             Wij bieden een compleet pakket aan digitale diensten om uw online succes te garanderen.
           </p>

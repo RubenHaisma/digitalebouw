@@ -1,86 +1,233 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { Select, SelectContent, SelectTrigger, SelectValue, SelectItem } from "@/components/ui/select";
+import { Slider } from "@/components/ui/slider";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Laptop, Smartphone, Tablet } from "lucide-react";
+import { useSpring, animated } from "react-spring";
+import Link from "next/link";
 
-export function UniqueFeature() {
-  const [activeDevice, setActiveDevice] = useState<"desktop" | "tablet" | "mobile">("desktop");
+// Define Website Types and Options
+const websiteTypes = [
+  { value: "business", label: "Zakelijke Website" },
+  { value: "portfolio", label: "Portfolio Website" },
+  { value: "ecommerce", label: "eCommerce Website" },
+  { value: "blog", label: "Blog Website" },
+  { value: "landingpage", label: "Landing Page" },
+  { value: "membership", label: "Leden Website" },
+  { value: "nonprofit", label: "Non-profit Website" },
+];
 
-  const devices = {
-    desktop: { icon: Laptop, label: "Desktop" },
-    tablet: { icon: Tablet, label: "Tablet" },
-    mobile: { icon: Smartphone, label: "Mobile" },
+const UniqueFeature = () => {
+  const [step, setStep] = useState(1);
+
+  // State variables for interactive pricing and selection
+  const [websiteType, setWebsiteType] = useState("business");
+  const [pages, setPages] = useState(5);
+  const [design, setDesign] = useState(3); // 1 - Basic, 2 - Advanced, 3 - Custom
+  const [ecommerce, setEcommerce] = useState(false);
+  const [seo, setSeo] = useState(false);
+  const [multilingual, setMultilingual] = useState(false);
+  const [price, setPrice] = useState(500); // Set initial price
+
+  // Calculate price based on user input
+  const calculatePrice = () => {
+    let basePrice = 500;
+
+    if (websiteType === "portfolio") basePrice = 400;
+    if (websiteType === "ecommerce") basePrice = 800;
+    if (websiteType === "blog") basePrice = 300;
+    if (websiteType === "landingpage") basePrice = 250;
+    if (websiteType === "membership") basePrice = 600;
+    if (websiteType === "nonprofit") basePrice = 350;
+
+    basePrice += pages * 50; // Pages adjustment
+    if (design === 2) basePrice += 200;
+    if (design === 3) basePrice += 500;
+    if (ecommerce) basePrice += 300;
+    if (seo) basePrice += 150;
+    if (multilingual) basePrice += 200;
+
+    setPrice(basePrice);
   };
 
+  // Trigger price recalculation on each change
+  useEffect(() => {
+    calculatePrice();
+  }, [websiteType, pages, design, ecommerce, seo, multilingual]);
+
+  // Step Navigation
+  const handleNext = () => setStep(step + 1);
+  const handleBack = () => setStep(step - 1);
+
   return (
-    <section className="py-20">
-      <div className="container">
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold">Live Website Preview</h2>
-          <p className="mx-auto max-w-2xl text-muted-foreground">
-            Bekijk direct hoe uw website er uit zal zien op verschillende apparaten.
+    <div className="flex flex-col min-h-screen items-center">
+      <main className="flex-1 w-full py-10 md:py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12 md:mb-16"
+        >
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+            Welke website past bij jouw bedrijf?
+          </h1>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+            Selecteer het type website, het aantal pagina&apos;s, het ontwerp en extra opties om de kosten te berekenen.
           </p>
-        </div>
-        <div className="mx-auto max-w-5xl">
-          <div className="mb-8 flex justify-center space-x-4">
-            {(Object.entries(devices) as [keyof typeof devices, typeof devices[keyof typeof devices]][]).map(([key, { icon: Icon, label }]) => (
-              <Button
-                key={key}
-                variant={activeDevice === key ? "default" : "outline"}
-                onClick={() => setActiveDevice(key as typeof activeDevice)}
-                className="flex items-center space-x-2"
-              >
-                <Icon className="h-4 w-4" />
-                <span>{label}</span>
+        </motion.div>
+
+        {/* Step 1: Website Type Selection */}
+        {step === 1 && (
+          <Card className="p-6 shadow-md hover:shadow-lg transition-shadow duration-200">
+            <h3 className="text-lg md:text-xl font-semibold mb-4">Kies je Website Type</h3>
+            <Select value={websiteType} onValueChange={(value) => setWebsiteType(value)}>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Selecteer het type website" />
+              </SelectTrigger>
+              <SelectContent>
+                {websiteTypes.map((option) => (
+                  <SelectItem key={option.value} value={option.value}>
+                    {option.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+
+            <div className="mt-6 text-center">
+              <Button onClick={handleNext} size="lg" className="px-6 py-3 text-lg font-semibold">
+                Volgende
               </Button>
-            ))}
-          </div>
-          <Card className="overflow-hidden">
-            <div className="relative aspect-[16/9] bg-muted">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeDevice}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute inset-0 flex items-center justify-center"
-                >
-                  <div
-                    className={`relative ${
-                      activeDevice === "mobile"
-                        ? "w-[375px]"
-                        : activeDevice === "tablet"
-                        ? "w-[768px]"
-                        : "w-full"
-                    }`}
-                  >
-                    <div className="rounded-lg border bg-background shadow-lg">
-                      <div className="border-b p-4">
-                        <div className="flex items-center space-x-2">
-                          <div className="h-3 w-3 rounded-full bg-red-500"></div>
-                          <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
-                          <div className="h-3 w-3 rounded-full bg-green-500"></div>
-                        </div>
-                      </div>
-                      <div className="p-4">
-                        <div className="space-y-4">
-                          <div className="h-8 w-3/4 rounded bg-muted"></div>
-                          <div className="h-4 w-full rounded bg-muted"></div>
-                          <div className="h-4 w-2/3 rounded bg-muted"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
             </div>
           </Card>
-        </div>
-      </div>
-    </section>
+        )}
+
+        {/* Step 2: Pages & Design Selection */}
+        {step === 2 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+            {/* Pages */}
+            <Card className="p-6 shadow-md hover:shadow-lg transition-shadow duration-200">
+              <h3 className="text-lg md:text-xl font-semibold mb-4">Aantal Pagina&apos;s</h3>
+              <Slider
+                value={[pages]}
+                min={1}
+                max={20}
+                step={1}
+                onValueChange={([value]) => setPages(value)}
+              />
+              <p className="mt-2 text-center">Aantal Pagina&apos;s: {pages}</p>
+            </Card>
+
+            {/* Design Level */}
+            <Card className="p-6 shadow-md hover:shadow-lg transition-shadow duration-200">
+              <h3 className="text-lg md:text-xl font-semibold mb-4">Kies het Ontwerp Niveau</h3>
+              <Select value={design.toString()} onValueChange={(value) => setDesign(Number(value))}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Selecteer het ontwerp niveau" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="1">Basis Ontwerp</SelectItem>
+                  <SelectItem value="2">Geavanceerd Ontwerp</SelectItem>
+                  <SelectItem value="3">Op Maat Ontwerp</SelectItem>
+                </SelectContent>
+              </Select>
+            </Card>
+
+            <div className="mt-6 text-center">
+              <Button onClick={handleBack} size="lg" className="px-6 py-3 text-lg font-semibold mr-4">
+                Terug
+              </Button>
+              <Button onClick={handleNext} size="lg" className="px-6 py-3 text-lg font-semibold">
+                Volgende
+              </Button>
+            </div>
+          </div>
+        )}
+
+        {/* Step 3: Extra Features Selection */}
+        {step === 3 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+            {/* eCommerce Option */}
+            <Card className="p-6 shadow-md hover:shadow-lg transition-shadow duration-200">
+              <h3 className="text-lg md:text-xl font-semibold mb-4">Wil je een eCommerce Website?</h3>
+              <label className="flex items-center space-x-4">
+                <input
+                  type="checkbox"
+                  checked={ecommerce}
+                  onChange={(e) => setEcommerce(e.target.checked)}
+                  className="w-6 h-6"
+                />
+                <span>Ja, ik wil een online winkel</span>
+              </label>
+            </Card>
+
+            {/* SEO Option */}
+            <Card className="p-6 shadow-md hover:shadow-lg transition-shadow duration-200">
+              <h3 className="text-lg md:text-xl font-semibold mb-4">SEO Optimalisatie</h3>
+              <label className="flex items-center space-x-4">
+                <input
+                  type="checkbox"
+                  checked={seo}
+                  onChange={(e) => setSeo(e.target.checked)}
+                  className="w-6 h-6"
+                />
+                <span>Ja, ik wil SEO optimalisatie</span>
+              </label>
+            </Card>
+
+            {/* Multilingual Option */}
+            <Card className="p-6 shadow-md hover:shadow-lg transition-shadow duration-200">
+              <h3 className="text-lg md:text-xl font-semibold mb-4">Meertaligheid</h3>
+              <label className="flex items-center space-x-4">
+                <input
+                  type="checkbox"
+                  checked={multilingual}
+                  onChange={(e) => setMultilingual(e.target.checked)}
+                  className="w-6 h-6"
+                />
+                <span>Ja, ik wil mijn website in meerdere talen</span>
+              </label>
+            </Card>
+
+            <div className="mt-6 text-center">
+              <Button onClick={handleBack} size="lg" className="px-6 py-3 text-lg font-semibold mr-4">
+                Terug
+              </Button>
+              <Button onClick={handleNext} size="lg" className="px-6 py-3 text-lg font-semibold">
+                Volgende
+              </Button>
+            </div>
+          </div>
+        )}
+
+        {/* Step 4: Show Final Price */}
+        {step === 4 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center mt-12"
+          >
+            <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">
+              De kosten voor je Website zijn: €{price.toFixed(2)}
+            </h2>
+            <p className="text-muted-foreground">
+              De kosten worden berekend op basis van het aantal pagina&apos;s, het ontwerp niveau en de extra opties.
+            </p>
+            <div className="mt-6">
+              <Link href="/contact">
+                <Button size="lg" className="px-6 py-3 text-lg font-semibold">
+                  Vraag een Offerte aan
+                </Button>
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </main>
+    </div>
   );
-}
+};
+
+export default UniqueFeature;

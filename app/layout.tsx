@@ -77,25 +77,29 @@ export default function RootLayout({
         
         {/* Structured Data (JSON-LD) */}
         <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "url": "https://digitalebouw.nl",
-            "name": "Digitalebouw.nl",
-            "description":
-              "Wij bouwen professionele websites die scoren! Van SEO-optimalisatie tot gebruiksvriendelijke webshops, wij helpen jouw bedrijf online groeien.",
-            "publisher": {
+            {JSON.stringify({
+              "@context": "https://schema.org",
               "@type": "Organization",
               "name": "Digitalebouw.nl",
+              "url": "https://digitalebouw.nl",
               "logo": "https://digitalebouw.nl/logo.png",
-            },
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": "https://digitalebouw.nl?q={search_term_string}",
-              "query-input": "required name=search_term_string",
-            },
-          })}
-        </script>
+              "description":
+                "Website laten maken door Digitalebouw.nl met focus op SEO-optimalisatie, e-commerce oplossingen, en digitale transformatie. Beschikbaar in Amsterdam, Rotterdam, Utrecht, Groningen, en meer.",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+31-123456789",
+                "contactType": "Customer Service",
+                "areaServed": "NL",
+                "availableLanguage": "Dutch",
+              },
+              "sameAs": ["https://www.facebook.com/digitalebouwnl", "https://twitter.com/digitalebouwnl"],
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://digitalebouw.nl?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
+            })}
+          </script>
       </head>
       <body className={`${inter.className} flex min-h-screen flex-col`}>
         <ThemeProvider

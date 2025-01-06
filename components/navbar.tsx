@@ -68,7 +68,7 @@ export function Navbar() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/portfolio" legacyBehavior passHref>
+                {/* <Link href="/portfolio" legacyBehavior passHref>
                   <NavigationMenuLink
                     className={cn(
                       "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50",
@@ -77,10 +77,10 @@ export function Navbar() {
                   >
                     Portfolio
                   </NavigationMenuLink>
-                </Link>
+                </Link> */}
               </NavigationMenuItem>
               <NavigationMenuItem>
-                {/* <Link href="/blog" legacyBehavior passHref>
+                <Link href="/blog" legacyBehavior passHref>
                   <NavigationMenuLink
                     className={cn(
                       "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50",
@@ -89,7 +89,7 @@ export function Navbar() {
                   >
                     Blog
                   </NavigationMenuLink>
-                </Link> */}
+                </Link>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
@@ -136,12 +136,12 @@ export function Navbar() {
                 ))}
               </ul>
             </div>
-            <Link href="/portfolio" className={cn(navLinkClasses(pathname === "/portfolio"))} onClick={closeMobileMenu}>
+            {/* <Link href="/portfolio" className={cn(navLinkClasses(pathname === "/portfolio"))} onClick={closeMobileMenu}>
               Portfolio
-            </Link>
-            {/* <Link href="/blog" className={cn(navLinkClasses(pathname === "/blog"))} onClick={closeMobileMenu}>
-              Blog
             </Link> */}
+            <Link href="/blog" className={cn(navLinkClasses(pathname === "/blog"))} onClick={closeMobileMenu}>
+              Blog
+            </Link>
             <Link href="/contact" className="block text-sm font-medium text-primary hover:text-accent" onClick={closeMobileMenu}>
               Gratis consult
             </Link>

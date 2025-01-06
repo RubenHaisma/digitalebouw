@@ -1,90 +1,83 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { Book, Edit, FileText, Star } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { Calendar, User } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
-const posts = [
+// Blog posts data (simulated, you would usually fetch this from a database or file)
+const blogPosts = [
   {
-    title: "De Toekomst van Web Development in 2024",
-    excerpt: "Ontdek de laatste trends en ontwikkelingen in web development en hoe deze uw bedrijf kunnen helpen groeien.",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=400&fit=crop",
-    date: "15 April 2024",
-    author: "Jan de Vries",
-    category: "Technologie",
+    slug: "hoe-bouw-je-een-seo-vriendelijke-website",
+    title: "Hoe bouw je een SEO-vriendelijke website?",
+    description: "Ontdek de beste manieren om je website SEO-vriendelijk te maken voor betere zoekmachine resultaten.",
   },
   {
-    title: "SEO Strategieën voor Betere Rankings",
-    excerpt: "Praktische tips en strategieën om uw website hoger in Google te laten ranken.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
-    date: "12 April 2024",
-    author: "Lisa Bakker",
-    category: "SEO",
+    slug: "maatwerkwebsites-vs-templates",
+    title: "Maatwerkwebsites versus Templates",
+    description: "Waarom maatwerkwebsites beter zijn dan standaard templates voor je bedrijf.",
   },
   {
-    title: "Waarom Snelle Websites Belangrijk Zijn",
-    excerpt: "De impact van laadsnelheid op gebruikerservaring en conversies.",
-    image: "https://images.unsplash.com/photo-1558478551-1a378f63328e?w=800&h=400&fit=crop",
-    date: "10 April 2024",
-    author: "Mark Jansen",
-    category: "Performance",
+    slug: "hoe-kies-je-het-juiste-webdesign",
+    title: "Hoe kies je het juiste webdesign voor je bedrijf?",
+    description: "Een gids voor het kiezen van het juiste webdesign dat bij je merk en doelgroep past.",
+  },
+  {
+    slug: "goedkope-en-unieke-websitebouwers",
+    title: "Goedkope en unieke websitebouwers",
+    description: "Op zoek naar een betaalbare websitebouwer die toch unieke en professionele websites levert?",
+  },
+  {
+    slug: "waarom-ecommerce-websites-onmisbaar-is",
+    title: "Waarom ecommerce websites onmisbaar is",
+    description: "Ontdek waarom een professionele ecommerce website essentieel is voor de groei van je bedrijf.",
+  },
+  {
+    slug: "de-juiste-website-voor-jouw-bedrijf",
+    title: "De juiste website voor jouw bedrijf",
+    description: "Ontdek welke website het beste past bij jouw bedrijf, van zakelijke websites tot portfolio's en evenementwebsites.",
   },
 ];
 
-export default function Blog() {
+export default function BlogOverview() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
         <section className="py-20">
           <div className="container">
+            {/* Header Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className="text-center mb-16"
             >
-              <h1 className="text-4xl font-bold mb-6">Blog</h1>
+              <h1 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">Blog Overzicht</h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Ontdek de laatste ontwikkelingen en inzichten in web development,
-                SEO en digitale marketing.
+                Bekijk onze nieuwste blogposts over webdesign, SEO-optimalisatie en meer!
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {posts.map((post, index) => (
+            {/* Blog Posts Section */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+              {blogPosts.map((post, index) => (
                 <motion.div
-                  key={post.title}
+                  key={post.slug}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <Card className="overflow-hidden">
-                    <div className="relative h-48">
-                      <Image
-                        src={post.image}
-                        alt={post.title}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="p-6">
-                      <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-4">
-                        <div className="flex items-center">
-                          <Calendar className="w-4 h-4 mr-2" />
-                          {post.date}
-                        </div>
-                        <div className="flex items-center">
-                          <User className="w-4 h-4 mr-2" />
-                          {post.author}
-                        </div>
-                      </div>
-                      <h2 className="text-xl font-bold mb-2">{post.title}</h2>
-                      <p className="text-muted-foreground mb-4">{post.excerpt}</p>
-                      <span className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">
-                        {post.category}
-                      </span>
-                    </div>
+                  <Card className="p-6 h-64 flex flex-col items-center justify-center text-center shadow-md hover:shadow-lg transition-shadow duration-200">
+                    <Book className="w-12 h-12 mb-4 text-primary" />
+                    <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{post.title}</h3>
+                    <p className="text-muted-foreground">{post.description}</p>
+                    <Link href={`/blog/${post.slug}`}>
+                      <Button size="sm" className="mt-4">
+                        Lees meer
+                      </Button>
+                    </Link>
                   </Card>
                 </motion.div>
               ))}

@@ -12,11 +12,11 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Website laten maken? Wij bouwen jouw succes online! - Digitalebouw.nl',
   description:
-    'Wil jij een professionele website laten maken die écht scoort? Bij Digitalebouw.nl bouwen we websites op maat met razendsnelle SEO-optimalisatie en onweerstaanbare designs. Start vandaag!',
+    'Wil jij een professionele en goedkope website laten maken die écht scoort? Bij Digitalebouw.nl bouwen we websites op maat met razendsnelle SEO-optimalisatie, onweerstaanbare designs en gebruiksvriendelijke webshops. Start vandaag!',
   openGraph: {
     title: 'Professionele websites laten maken - Digitalebouw.nl',
     description:
-      'Je eigen website bouwen of laten maken? Digitalebouw.nl is jouw partner voor indrukwekkende designs, SEO-optimalisatie en winstgevende e-commerce websites. Ontdek meer!',
+      'Je eigen website bouwen of laten maken? Digitalebouw.nl is jouw partner voor indrukwekkende designs, SEO-optimalisatie, gebruiksvriendelijke en betaalbare e-commerce websites. Ontdek meer!',
     url: 'https://digitalebouw.nl',
     siteName: 'Digitalebouw.nl',
     images: [
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     site: '@digitalebouwnl',
     title: 'Website laten maken - Digitalebouw.nl',
     description:
-      'Wij bouwen websites die jouw bedrijf online laten groeien. Vraag direct een offerte aan en ontdek wat wij voor jou kunnen betekenen!',
+      'Wij bouwen betaalbare websites die jouw bedrijf online laten groeien. Vraag direct een offerte aan en ontdek wat wij voor jou kunnen betekenen!',
   },
   icons: {
     icon: '/favicon.ico',
@@ -61,11 +61,11 @@ export default function RootLayout({
         {/* SEO Meta Tags */}
         <meta
           name="keywords"
-          content="Website bouwen, Website laten maken, Professionele websites, SEO websites, Betaalbare websites, Website ontwikkeling, Webdesign Nederland"
+          content="Website laten maken, goedkope websites, professionele websites, maatwerk websites, SEO websites, webdesign Nederland, gebruiksvriendelijke websites, betaalbare websites, e-commerce websites, webshops bouwen, website optimalisatie"
         />
         <meta
           name="description"
-          content="Een website laten maken? Digitalebouw.nl helpt jouw bedrijf online te groeien met maatwerk websites, krachtige SEO en winstgevende e-commerce oplossingen."
+          content="Een goedkope en professionele website laten maken? Digitalebouw.nl helpt jouw bedrijf online te groeien met maatwerk websites, krachtige SEO-optimalisatie en gebruiksvriendelijke e-commerce oplossingen. Start vandaag met een website die scoort!"
         />
         <meta name="author" content="Digitalebouw.nl" />
         <meta name="theme-color" content="#1a73e8" />
@@ -83,7 +83,7 @@ export default function RootLayout({
             "url": "https://digitalebouw.nl",
             "name": "Digitalebouw.nl",
             "description":
-              "Professionele websites laten maken die scoren! Wij helpen jouw bedrijf groeien met maatwerk webdesign, e-commerce en SEO-optimalisatie.",
+              "Wij bouwen professionele websites die scoren! Van SEO-optimalisatie tot gebruiksvriendelijke webshops, wij helpen jouw bedrijf online groeien.",
             "publisher": {
               "@type": "Organization",
               "name": "Digitalebouw.nl",

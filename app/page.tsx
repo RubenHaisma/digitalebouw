@@ -12,7 +12,6 @@ export default function Home() {
     <div className="w-full">
       <HeroSection />
       <ServicesSection />
-      <UniqueFeature />
       <PortfolioSection />
       <WhyUsSection />
       <PricingSection />

@@ -28,9 +28,9 @@ export function Navbar() {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex flex-grow justify-center ml-14"> {/* Added ml-4 for margin-left */}
+        <div className="hidden md:flex flex-grow justify-center gap-x-4"> {/* Added gap-x-4 for spacing */}
           <NavigationMenu>
-            <NavigationMenuList className="space-x-4"> {/* Added space-x-4 for spacing */}
+            <NavigationMenuList>
               <NavigationMenuItem>
                 <Link href="/" legacyBehavior passHref>
                   <NavigationMenuLink
@@ -40,6 +40,30 @@ export function Navbar() {
                     )}
                   >
                     Home
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link href="/blog" legacyBehavior passHref>
+                  <NavigationMenuLink
+                    className={cn(
+                      "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50",
+                      pathname === "/blog" && "bg-accent/50"
+                    )}
+                  >
+                    Blog
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link href="/quote" legacyBehavior passHref>
+                  <NavigationMenuLink
+                    className={cn(
+                      "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50",
+                      pathname === "/quote" && "bg-accent/50"
+                    )}
+                  >
+                    Prijs
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
@@ -66,30 +90,6 @@ export function Navbar() {
                     ))}
                   </ul>
                 </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                {/* <Link href="/portfolio" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50",
-                      pathname === "/portfolio" && "bg-accent/50"
-                    )}
-                  >
-                    Portfolio
-                  </NavigationMenuLink>
-                </Link> */}
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/blog" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50",
-                      pathname === "/blog" && "bg-accent/50"
-                    )}
-                  >
-                    Blog
-                  </NavigationMenuLink>
-                </Link>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
@@ -122,6 +122,12 @@ export function Navbar() {
             <Link href="/" className={cn(navLinkClasses(pathname === "/"))} onClick={closeMobileMenu}>
               Home
             </Link>
+            <Link href="/blog" className={cn(navLinkClasses(pathname === "/blog"))} onClick={closeMobileMenu}>
+              Blog
+            </Link>
+            <Link href="/quote" className={cn(navLinkClasses(pathname === "/quote"))} onClick={closeMobileMenu}>
+              Prijs
+            </Link>
             <div>
               <button className="w-full text-left text-sm font-medium">
                 Diensten
@@ -136,12 +142,6 @@ export function Navbar() {
                 ))}
               </ul>
             </div>
-            {/* <Link href="/portfolio" className={cn(navLinkClasses(pathname === "/portfolio"))} onClick={closeMobileMenu}>
-              Portfolio
-            </Link> */}
-            <Link href="/blog" className={cn(navLinkClasses(pathname === "/blog"))} onClick={closeMobileMenu}>
-              Blog
-            </Link>
             <Link href="/contact" className="block text-sm font-medium text-primary hover:text-accent" onClick={closeMobileMenu}>
               Gratis consult
             </Link>

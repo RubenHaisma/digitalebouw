@@ -32,7 +32,7 @@ export function HeroSection() {
               <Link href="/contact">Gratis consult</Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
-              <Link href="/portfolio">Bekijk ons portfolio</Link>
+              <Link href="/quote">Prijs indicatie</Link>
             </Button>
           </div>
         </motion.div>

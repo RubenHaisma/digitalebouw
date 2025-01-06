@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectTrigger, SelectValue, SelectItem } from "@
 import { Slider } from "@/components/ui/slider";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useSpring, animated } from "react-spring";
+import { useSpring, animated } from 'react-spring';
 import Link from "next/link";
 
 // Define Website Types and Options
@@ -64,24 +64,24 @@ const UniqueFeature = () => {
 
   return (
     <div className="flex flex-col min-h-screen items-center">
-      <main className="flex-1 w-full py-10 md:py-20">
+      <main className="flex-1 w-full py-6 md:py-8"> {/* Reduced padding for better mobile responsiveness */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12 md:mb-16"
+          className="text-center mb-8 md:mb-12"  // Reduced margin for better mobile fit
         >
           <h1 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-            Welke website past bij jouw bedrijf?
+          Bereken de kosten van je website
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Selecteer het type website, het aantal pagina&apos;s, het ontwerp en extra opties om de kosten te berekenen.
+          Vul de gegevens in om een offerte te krijgen voor je op maat gemaakte website.
           </p>
         </motion.div>
 
         {/* Step 1: Website Type Selection */}
         {step === 1 && (
-          <Card className="p-6 shadow-md hover:shadow-lg transition-shadow duration-200">
+          <Card className="p-6 shadow-md hover:shadow-lg transition-shadow duration-200 mb-6"> {/* Added margin-bottom */}
             <h3 className="text-lg md:text-xl font-semibold mb-4">Kies je Website Type</h3>
             <Select value={websiteType} onValueChange={(value) => setWebsiteType(value)}>
               <SelectTrigger className="w-full">
@@ -106,9 +106,9 @@ const UniqueFeature = () => {
 
         {/* Step 2: Pages & Design Selection */}
         {step === 2 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:px-6"> {/* Added responsive grid */}
             {/* Pages */}
-            <Card className="p-6 shadow-md hover:shadow-lg transition-shadow duration-200">
+            <Card className="p-6 shadow-md hover:shadow-lg transition-shadow duration-200 mb-6">
               <h3 className="text-lg md:text-xl font-semibold mb-4">Aantal Pagina&apos;s</h3>
               <Slider
                 value={[pages]}
@@ -121,7 +121,7 @@ const UniqueFeature = () => {
             </Card>
 
             {/* Design Level */}
-            <Card className="p-6 shadow-md hover:shadow-lg transition-shadow duration-200">
+            <Card className="p-6 shadow-md hover:shadow-lg transition-shadow duration-200 mb-6">
               <h3 className="text-lg md:text-xl font-semibold mb-4">Kies het Ontwerp Niveau</h3>
               <Select value={design.toString()} onValueChange={(value) => setDesign(Number(value))}>
                 <SelectTrigger className="w-full">
@@ -148,9 +148,9 @@ const UniqueFeature = () => {
 
         {/* Step 3: Extra Features Selection */}
         {step === 3 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:px-6"> {/* Added responsive grid */}
             {/* eCommerce Option */}
-            <Card className="p-6 shadow-md hover:shadow-lg transition-shadow duration-200">
+            <Card className="p-6 shadow-md hover:shadow-lg transition-shadow duration-200 mb-6">
               <h3 className="text-lg md:text-xl font-semibold mb-4">Wil je een eCommerce Website?</h3>
               <label className="flex items-center space-x-4">
                 <input
@@ -164,7 +164,7 @@ const UniqueFeature = () => {
             </Card>
 
             {/* SEO Option */}
-            <Card className="p-6 shadow-md hover:shadow-lg transition-shadow duration-200">
+            <Card className="p-6 shadow-md hover:shadow-lg transition-shadow duration-200 mb-6">
               <h3 className="text-lg md:text-xl font-semibold mb-4">SEO Optimalisatie</h3>
               <label className="flex items-center space-x-4">
                 <input
@@ -178,7 +178,7 @@ const UniqueFeature = () => {
             </Card>
 
             {/* Multilingual Option */}
-            <Card className="p-6 shadow-md hover:shadow-lg transition-shadow duration-200">
+            <Card className="p-6 shadow-md hover:shadow-lg transition-shadow duration-200 mb-6">
               <h3 className="text-lg md:text-xl font-semibold mb-4">Meertaligheid</h3>
               <label className="flex items-center space-x-4">
                 <input
@@ -208,7 +208,7 @@ const UniqueFeature = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center mt-12"
+            className="text-center mt-6"
           >
             <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">
               De kosten voor je Website zijn: €{price.toFixed(2)}

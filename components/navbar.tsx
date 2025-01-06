@@ -109,9 +109,6 @@ export function Navbar() {
         {/* Call to Action and Theme Toggle for Desktop */}
         <div className="hidden md:flex items-center space-x-4">
           <ThemeToggle />
-          <Button asChild variant="default">
-            <Link href="/contact">Gratis consult</Link>
-          </Button>
         </div>
       </div>
 
@@ -142,9 +139,6 @@ export function Navbar() {
                 ))}
               </ul>
             </div>
-            <Link href="/contact" className="block text-sm font-medium text-primary hover:text-accent" onClick={closeMobileMenu}>
-              Gratis consult
-            </Link>
           </nav>
         </div>
       )}

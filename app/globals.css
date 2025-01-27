@@ -6,46 +6,75 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
+    
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
+    
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 186 100% 50%;
+    
+    /* Warm blue as primary color */
+    --primary: 215 90% 50%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
+    
+    /* Softer secondary color */
+    --secondary: 218 30% 95%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
+    
+    /* Muted tones */
+    --muted: 218 30% 95%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 186 100% 50%;
+    
+    /* Warm accent color */
+    --accent: 215 90% 50%;
     --accent-foreground: 222.2 47.4% 11.2%;
+    
+    /* Destructive color */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
+    
+    /* Border and input colors */
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 186 100% 50%;
+    --ring: 215 90% 50%;
+    
     --radius: 0.5rem;
   }
 
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
+    
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
+    
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 186 100% 50%;
+    
+    /* Warmer primary in dark mode */
+    --primary: 215 90% 60%;
     --primary-foreground: 222.2 47.4% 11.2%;
+    
+    /* Darker secondary */
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
+    
+    /* Muted dark tones */
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-    --accent: 186 100% 50%;
+    
+    /* Warm accent in dark mode */
+    --accent: 215 90% 60%;
     --accent-foreground: 210 40% 98%;
+    
+    /* Destructive dark */
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
+    
+    /* Dark mode borders */
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 186 100% 50%;
+    --ring: 215 90% 60%;
   }
 }
 
@@ -66,4 +95,36 @@
 
 .section-container {
   @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full;
+}
+
+/* Custom shadows for depth */
+.shadow-soft {
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-card {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Gradient backgrounds */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, hsl(215, 90%, 50%), hsl(215, 90%, 40%));
+}
+
+.bg-gradient-soft {
+  background: linear-gradient(135deg, hsl(218, 30%, 95%), hsl(218, 30%, 90%));
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: transform 0.2s ease-in-out;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+/* Focus styles */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
 }

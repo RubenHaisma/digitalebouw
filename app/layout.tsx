@@ -7,46 +7,70 @@ import { Footer } from '@/components/footer';
 import { Toaster } from '@/components/ui/sonner';
 import { GoogleAnalytics } from '@/components/analytics';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
 export const metadata: Metadata = {
-  title: 'Website laten maken? Wij bouwen jouw succes online! - Digitalebouw.nl',
-  description:
-    'Wil jij een professionele en goedkope website laten maken die écht scoort? Bij Digitalebouw.nl bouwen we websites op maat met razendsnelle SEO-optimalisatie, onweerstaanbare designs en gebruiksvriendelijke webshops. Start vandaag!',
+  metadataBase: new URL('https://digitalebouw.nl'),
+  title: {
+    default: 'Professionele Websites voor Bouwbedrijven | Digitalebouw.nl',
+    template: '%s | Digitalebouw.nl'
+  },
+  description: 'Specialisten in websites en digitale oplossingen voor de bouwsector. Verhoog uw online zichtbaarheid en genereer meer leads met een professionele website.',
+  keywords: [
+    'website bouwbedrijf',
+    'bouw website',
+    'website aannemer',
+    'bouwsector digitalisering',
+    'bouw digitale transformatie',
+    'website bouwsector',
+    'online marketing bouw',
+    'web development bouw',
+    'bouwbedrijf online presence',
+    'digitale strategie bouw'
+  ],
+  authors: [{ name: 'Digitalebouw.nl' }],
+  creator: 'Digitalebouw.nl',
+  publisher: 'Digitalebouw.nl',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
-    title: 'Professionele websites laten maken - Digitalebouw.nl',
-    description:
-      'Je eigen website bouwen of laten maken? Digitalebouw.nl is jouw partner voor indrukwekkende designs, SEO-optimalisatie, gebruiksvriendelijke en betaalbare e-commerce websites. Ontdek meer!',
+    type: 'website',
+    locale: 'nl_NL',
     url: 'https://digitalebouw.nl',
+    title: 'Digitalebouw.nl - Websites voor de Bouwsector',
+    description: 'Specialisten in websites en digitale oplossingen voor de bouwsector. Verhoog uw online zichtbaarheid en genereer meer leads.',
     siteName: 'Digitalebouw.nl',
     images: [
       {
         url: 'https://digitalebouw.nl/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Een prachtige website gebouwd door Digitalebouw.nl',
-      },
+        alt: 'Digitalebouw.nl - Websites voor de Bouwsector',
+      }
     ],
-    locale: 'nl_NL',
-    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@digitalebouwnl',
-    title: 'Website laten maken - Digitalebouw.nl',
-    description:
-      'Wij bouwen betaalbare websites die jouw bedrijf online laten groeien. Vraag direct een offerte aan en ontdek wat wij voor jou kunnen betekenen!',
-  },
-  icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    title: 'Digitalebouw.nl - Websites voor de Bouwsector',
+    description: 'Specialisten in websites en digitale oplossingen voor de bouwsector.',
+    images: ['https://digitalebouw.nl/images/twitter-image.jpg'],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
-  alternates: {
-    canonical: 'https://digitalebouw.nl',
+  verification: {
+    google: 'your-google-verification-code',
   },
 };
 
@@ -58,48 +82,53 @@ export default function RootLayout({
   return (
     <html lang="nl" suppressHydrationWarning>
       <head>
-        {/* SEO Meta Tags */}
-        <meta
-          name="keywords"
-          content="Website laten maken, goedkope websites, professionele websites, maatwerk websites, SEO websites, webdesign Nederland, gebruiksvriendelijke websites, betaalbare websites, e-commerce websites, webshops bouwen, website optimalisatie"
-        />
-        <meta
-          name="description"
-          content="Een goedkope en professionele website laten maken? Digitalebouw.nl helpt jouw bedrijf online te groeien met maatwerk websites, krachtige SEO-optimalisatie en gebruiksvriendelijke e-commerce oplossingen. Start vandaag met een website die scoort!"
-        />
-        <meta name="author" content="Digitalebouw.nl" />
-        <meta name="theme-color" content="#1a73e8" />
-        <link rel="manifest" href="/site.webmanifest" />
-
-        {/* Preload & Preconnect for Performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="canonical" href="https://digitalebouw.nl" />
+        <link rel="alternate" hrefLang="nl" href="https://digitalebouw.nl" />
         
-        {/* Structured Data (JSON-LD) */}
-        <script type="application/ld+json">
-            {JSON.stringify({
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
+              "@type": "ProfessionalService",
               "name": "Digitalebouw.nl",
+              "image": "https://digitalebouw.nl/images/logo.png",
+              "description": "Specialisten in websites en digitale oplossingen voor de bouwsector.",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Biltstraat 160",
+                "addressLocality": "Utrecht",
+                "postalCode": "3572 AS",
+                "addressCountry": "NL"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "52.0843114",
+                "longitude": "5.1204094"
+              },
               "url": "https://digitalebouw.nl",
-              "logo": "https://digitalebouw.nl/logo.png",
-              "description":
-                "Website laten maken door Digitalebouw.nl met focus op SEO-optimalisatie, e-commerce oplossingen, en digitale transformatie. Beschikbaar in Amsterdam, Rotterdam, Utrecht, Groningen, en meer.",
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+31-123456789",
-                "contactType": "Customer Service",
-                "areaServed": "NL",
-                "availableLanguage": "Dutch",
+              "telephone": "+31-649753682",
+              "priceRange": "€€",
+              "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday"
+                ],
+                "opens": "09:00",
+                "closes": "17:00"
               },
-              "sameAs": ["https://www.facebook.com/digitalebouwnl", "https://twitter.com/digitalebouwnl"],
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://digitalebouw.nl?q={search_term_string}",
-                "query-input": "required name=search_term_string",
-              },
-            })}
-          </script>
+              "sameAs": [
+                "https://www.linkedin.com/company/digitalebouw",
+                "https://www.facebook.com/digitalebouw"
+              ]
+            })
+          }}
+        />
       </head>
       <body className={`${inter.className} flex min-h-screen flex-col`}>
         <ThemeProvider
